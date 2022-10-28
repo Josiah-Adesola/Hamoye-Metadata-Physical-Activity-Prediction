@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import pickle
 import numpy as np
-import sklearn
 
 
 #Load the saved model
@@ -52,10 +51,6 @@ def mhealth_prediction(alx, aly, alz, glx, gly, glz, arx, ary, arz, grx,
 
 
 def main():
-
-    add_selectbox = st.sidebar.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone"))
     st.title('Mobile Health  Human Behavior Prediction  App')
     st.markdown("This project was developed by Team Metadata")
     st.header("Human Activity Recognition")
