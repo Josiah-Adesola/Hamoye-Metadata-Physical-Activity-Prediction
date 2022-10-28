@@ -63,62 +63,65 @@ def main():
     st.image("exercise.png")
 
     #get data from user
-    age = st.number_input("Age", min_value=18, max_value=85, value=18)
-    sex = st.selectbox("Gender", ["Female", "Male"])
-    cp = st.selectbox("Chest Pain type", ['Typical angina', 'Atypical angina', 'Non-angina', 'Asymptomatic'])
-    trestbps = st.number_input("Resting Blood Pressure (mm/Hg)", min_value=90, max_value=300, value=90)
-    chol = st.number_input("Serum Cholesterol in mg/dl", min_value=100, max_value=650, value=150)
-    fbs = st.selectbox("Fastig Blood Sugar", ["True", "False"])
-    st.caption("Is it greater than 120mg/dl")
-    restecg = st.selectbox("Resting Electrocardiographic Results", ["Normal","Stt abnormality","Iv hypertrophy"])
-    thalach = st.number_input("Maximum heart rate achieved", min_value=50, max_value=250, value=60)
-    exang = st.selectbox("Exercise Induced Angina?", ["True", "False"])
-    oldpeak = st.number_input("ST Depression induced by exercise relative to rest",  min_value=0.0, max_value=6.5, value=1.0)
-    slope = st.number_input("Slope of the peak", min_value=1, max_value=3, value=1)
-    ca = st.number_input("Number of major vessels colored by flourosopy",min_value=0, max_value=3, value=1)
-    thal = st.selectbox("Stage of Thalassemia Blood disorder", ["Normal", "Fixed", "Defect", "Reversible Defect"])       
+    alx = st.number_input("Acceleration from the left-ankle sensor (X-axis)", min_value=-15.00, max_value=20.00, value=8.00)
+    aly = st.number_input("Acceleration from the left-ankle sensor (Y axis)", min_value=-20.00, max_value=4.00, value=1.00)
+    alz = st.number_input("Acceleration from the left-ankle sensor (Z axis)", min_value=-20.00, max_value=20.00, value=-10.00)
+    glx = st.number_input("Gyro from the left-ankle sensor (X axis)", min_value=-0.13, max_value=1.00, value=0.46)
+
+    gly = st.number_input("Gyro from the left-ankle sensor (Y axis)", min_value=-2.00, max_value=2.00, value=1.50)
+    glz = st.number_input("Gyro from the left-ankle sensor (Z axis)", min_value=-2.00, max_value=1.50, value=0.60)
+
+    arx = st.number_input("Acceleration from the right-lower-arm sensor (X axis)", min_value=-31.00, max_value=15.00, value=3.00)
+    ary = st.number_input("Acceleration from the right-lower-arm sensor (Y axis)", min_value=-19.00, max_value=13.00, value=5.00)
+
+    arz = st.number_input("Acceleration from the right-lower-arm sensor (Z axis)", min_value=-14.00, max_value=15.00, value=-6.00)
+    grx = st.number_input("Gyro from the right-lower-arm sensor (X axis)",  min_value=-1.70, max_value=2.00, value=1.00)
+
+    gry = st.number_input("Gyro from the right-lower-arm sensor (Y axis)", min_value= - 3.00, max_value=2.00, value=1.00)
+    grz = st.number_input("Gyro from the right-lower-arm sensor (Z axis)",min_value=-0.40, max_value=2.40, value=1.05)
+         
 
     #code for prediction
     prediction = ''
 
     #creating the button for prediction
 
-    if st.button('Heart Disease Test Result'):
+    if st.button('Physical Activity Prediction'):
         prediction = mhealth_prediction(alx, aly, alz, glx, gly, glz, arx, ary, arz, grx,
        gry, grz)
 
         if (prediction[0] == 1):
-            print("Standing Still")
+            st.success("Standing Still")
 
         elif (prediction[0] == 2):
-            print("Still and relaxing")
+            st.success("Still and relaxing")
         elif (prediction[0] == 3):
-            print("Lying Down")
+            st.success("Lying Down")
 
         elif (prediction[0] == 4):
-            print("Walking")
+            st.success("Walking")
         elif (prediction[0] == 5):
-            print("Climbing stairs")
+            st.success("Climbing stairs")
 
         elif (prediction[0] == 6):
-            print("Waist bends forward")
+            st.success("Waist bends forward")
         elif (prediction[0] == 7):
-            print("Standing Still")
+            st.success("Standing Still")
 
         elif (prediction[0] == 8):
-            print("Knees bending (crouching)")
+            st.success("Knees bending (crouching)")
         elif (prediction[0] == 9):
-            print("Cycling")
+            st.success("Cycling")
 
         elif (prediction[0] == 10):
-            print("Jogging")
+            st.success("Jogging")
         elif (prediction[0] == 11):
-            print("Running")
+            st.success("Running")
 
         elif (prediction[0] == 12):
-            print("Jump front & back")
+            st.success("Jump front & back")
         else: 
-            print("There's no exercise")
+            st.success("There's no exercise")
 
         return prediction
 
